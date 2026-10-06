@@ -1,14 +1,23 @@
-# Video Link Vault — Mini Project
+# ShortLocker (Pre-Production Build)
 
-A scaled-down, full-stack practice build of **Video Link Vault**: an ASP.NET Core Web API + React app that lets a user register, log in, and save, browse, filter, and delete video links from TikTok, YouTube, Instagram and Facebook — one private vault per account, organized by category and tags. Built as ASP.NET Core / React integration reps ahead of the full Video Link Vault capstone project.
+A scaled-down, full-stack practice build of **ShortLocker**: an ASP.NET Core Web API + React app that lets a user register, log in, and save, browse, filter, and delete video links from TikTok, YouTube, Instagram and Facebook — one private vault per account, organized by category and tags. Built as ASP.NET Core / React integration reps ahead of the full ShortLocker capstone project.
 
-> **This repo vs. the live product.** This mini project is the scoped, in-memory practice build described below — it does not include authentication tokens, a database, or admin tooling. Those were built out in the full capstone project, which shipped as **[ShortLocker](https://shortlocker.com)**, a deployed, publicly usable version of the same idea with real account auth (Microsoft Entra ID), persistent storage (PostgreSQL via EF Core), and admin controls. The screenshots and feature list in this README describe only what's actually in *this* repo.
+> **This repo vs. the live product.** This repo is the scoped, in-memory pre-production build described below — it does not include authentication tokens, a database, or admin tooling. Those were built out in the full capstone project, which shipped as the deployed, publicly usable **[ShortLocker](https://shortlocker.com)**, with real account auth (Microsoft Entra ID), persistent storage (PostgreSQL via EF Core), and admin controls. The feature list and tech stack below describe only what's actually implemented in _this_ repo's code.
 
 ## Screenshots
 
-| Log in | Vault (13 seeded demo links) |
-|---|---|
-| ![Login dialog](docs/screenshots/login-dialog.png) | ![Vault view with platform chips, categories, and a card grid](docs/screenshots/dashboard-view.png) |
+| Landing Page                                         | Vault (13 seeded demo links)                                                                        |
+| ---------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| ![Landing page](docs/screenshots/Landing%20Page.png) | ![Vault view with platform chips, categories, and a card grid](docs/screenshots/dashboard-view.png) |
+
+<details>
+<summary>More screens</summary>
+
+| Log in                                             | Account Settings                                                        | My Profile                                                  |
+| -------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------- |
+| ![Login dialog](docs/screenshots/login-dialog.png) | ![Account settings dialog](docs/screenshots/Accountsettings-dialog.png) | ![My profile dialog](docs/screenshots/Myprofile-dialog.png) |
+
+</details>
 
 ## Features
 
@@ -24,12 +33,12 @@ A scaled-down, full-stack practice build of **Video Link Vault**: an ASP.NET Cor
 
 ## Tech Stack
 
-| | |
-|---|---|
-| **Backend** | C#, .NET 10, ASP.NET Core Web API (controller-based) |
-| **Frontend** | React 19 + Vite |
-| **Storage** | In-memory (`List<T>`) — no database, by design (see [PRD.md](PRD.md)) |
-| **Auth** | `Microsoft.AspNetCore.Identity.PasswordHasher<T>` for hashing; no JWT (see Known Limitations) |
+|              |                                                                                               |
+| ------------ | --------------------------------------------------------------------------------------------- |
+| **Backend**  | C#, .NET 10, ASP.NET Core Web API (controller-based)                                          |
+| **Frontend** | React 19 + Vite                                                                               |
+| **Storage**  | In-memory (`List<T>`) — no database, by design (see [PRD.md](PRD.md))                         |
+| **Auth**     | `Microsoft.AspNetCore.Identity.PasswordHasher<T>` for hashing; no JWT (see Known Limitations) |
 
 ## Project Structure
 
@@ -52,21 +61,26 @@ Full design rationale, data types, and API endpoint list are in **[PRD.md](PRD.m
 ## Getting Started
 
 **Backend**
+
 ```
 cd Backend/Backend_Link_Vault
 dotnet run
 ```
+
 Runs at `https://localhost:7118` by default (confirm the port matches `Frontend/Frontend_Link_Vault/src/config.js`).
 
 **Frontend**
+
 ```
 cd Frontend/Frontend_Link_Vault
 npm install
 npm run dev
 ```
+
 Runs at `http://localhost:5173`.
 
 ### Demo login
+
 A demo account is seeded automatically at backend startup:
 
     Email:    timothy@example.com
@@ -76,13 +90,13 @@ It comes preloaded with 13 sample links across all four platforms so the app is 
 
 ## API Endpoints
 
-| Method | Route | Purpose |
-|---|---|---|
-| POST | `/api/auth/register` | Create an account |
-| POST | `/api/auth/login` | Log in |
-| GET | `/api/videolinks/{userId}` | List that account's links |
-| POST | `/api/videolinks/{userId}` | Add a link |
-| DELETE | `/api/videolinks/{userId}/{linkId}` | Delete a link |
+| Method | Route                               | Purpose                   |
+| ------ | ----------------------------------- | ------------------------- |
+| POST   | `/api/auth/register`                | Create an account         |
+| POST   | `/api/auth/login`                   | Log in                    |
+| GET    | `/api/videolinks/{userId}`          | List that account's links |
+| POST   | `/api/videolinks/{userId}`          | Add a link                |
+| DELETE | `/api/videolinks/{userId}/{linkId}` | Delete a link             |
 
 ## Known Limitations
 
@@ -94,9 +108,9 @@ This is a scoped mini project (8–12 hour budget), not the capstone — a few g
 
 Full reasoning for every design decision and deviation from the original plan is documented in `PRD.md`.
 
-## From mini project to shipped product
+## From pre-production build to shipped product
 
-This repo was the integration rep for a larger idea, and that idea is now live. **[ShortLocker](https://shortlocker.com)** is the deployed capstone build of the same concept — it adds real account authentication (Microsoft Entra ID), persistent PostgreSQL storage behind a proper repository layer, an admin role with moderation tooling, and per-account link limits, and it's hosted on Azure Static Web Apps with a custom domain. None of that lives in this repo; this repo intentionally stays frozen as the smaller, in-memory version it was built as, for reference and for anyone retracing the steps from practice build to production app.
+This repo was the integration rep for a larger idea, and that idea is now live. **[ShortLocker](https://shortlocker.com)** is the deployed capstone build of the same concept — it adds real account authentication (Microsoft Entra ID), persistent PostgreSQL storage behind a proper repository layer, an admin role with moderation tooling, and per-account link limits, and it's hosted on Azure Static Web Apps with a custom domain. None of that lives in this repo; this repo intentionally stays frozen as the smaller, in-memory version it was built as, for reference and for anyone retracing the steps from pre-production build to production app.
 
 ## License
 
