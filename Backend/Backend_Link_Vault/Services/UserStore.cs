@@ -36,6 +36,8 @@ public class UserStore
         return user;
     }
 
+    //IReadOnlyList<User> GetAllUsers() method returns a read-only list of all users in the _users list.
+  
     public IReadOnlyList<User> GetAllUsers()
     {
         return _users.AsReadOnly();

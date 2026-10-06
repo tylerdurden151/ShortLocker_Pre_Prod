@@ -2,6 +2,8 @@
 
 A scaled-down, full-stack practice build of **Video Link Vault**: an ASP.NET Core Web API + React app that lets a user register, log in, and save, browse, filter, and delete video links from TikTok, YouTube, Instagram and Facebook — one private vault per account, organized by category and tags. Built as ASP.NET Core / React integration reps ahead of the full Video Link Vault capstone project.
 
+> **This repo vs. the live product.** This mini project is the scoped, in-memory practice build described below — it does not include authentication tokens, a database, or admin tooling. Those were built out in the full capstone project, which shipped as **[ShortLocker](https://shortlocker.com)**, a deployed, publicly usable version of the same idea with real account auth (Microsoft Entra ID), persistent storage (PostgreSQL via EF Core), and admin controls. The screenshots and feature list in this README describe only what's actually in *this* repo.
+
 ## Screenshots
 
 | Log in | Vault (13 seeded demo links) |
@@ -86,11 +88,15 @@ It comes preloaded with 13 sample links across all four platforms so the app is 
 
 This is a scoped mini project (8–12 hour budget), not the capstone — a few gaps are accepted, not oversights:
 
-- **No JWT / token auth** — `{userId}` is taken from the route with nothing to verify ownership. Deferred to the capstone.
-- **All data is in-memory** — nothing persists across a backend restart except the reseeded demo account.
+- **No JWT / token auth** — `{userId}` is taken from the route with nothing to verify ownership. This gap was closed in the capstone with real Microsoft Entra ID authentication.
+- **All data is in-memory** — nothing persists across a backend restart except the reseeded demo account. The capstone replaced this with PostgreSQL + EF Core, including a proper repository layer.
 - **Thumbnails are YouTube-only** — TikTok, Instagram, and Facebook show a placeholder image (see [PRD.md](PRD.md) for why).
 
 Full reasoning for every design decision and deviation from the original plan is documented in `PRD.md`.
+
+## From mini project to shipped product
+
+This repo was the integration rep for a larger idea, and that idea is now live. **[ShortLocker](https://shortlocker.com)** is the deployed capstone build of the same concept — it adds real account authentication (Microsoft Entra ID), persistent PostgreSQL storage behind a proper repository layer, an admin role with moderation tooling, and per-account link limits, and it's hosted on Azure Static Web Apps with a custom domain. None of that lives in this repo; this repo intentionally stays frozen as the smaller, in-memory version it was built as, for reference and for anyone retracing the steps from practice build to production app.
 
 ## License
 
